@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>지반재해방재원(Institute of GDP) | 공식 홈페이지</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; color: #222; background: #f5f6fa; }
+    a { text-decoration: none; color: inherit; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e1e4ea;
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1.2rem;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+    }
+    .logo span {
+      color: #1f6feb;
+    }
+    nav ul {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+    }
+    nav li { list-style: none; }
+    nav a { opacity: 0.75; }
+    nav a:hover { opacity: 1; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: #1f6feb;
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(31,111,235,0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(31,111,235,0.4);
+      background: #1451b6;
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 3.5rem 1.2rem 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .hero-kicker {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #1f6feb;
+      margin-bottom: 0.7rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 2.4vw + 1.2rem, 2.8rem);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span {
+      color: #1f6feb;
+    }
+    .hero p {
+      font-size: 0.98rem;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+    .hero-meta strong { color: #111827; }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #dbeafe 0, #eff6ff 38%, #ffffff 80%);
+      border-radius: 1.5rem;
+      padding: 1.6rem 1.5rem;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.12);
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+    .hero-card h2 {
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+    .stat {
+      background: rgba(255,255,255,0.8);
+      border-radius: 1rem;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: #64748b;
+      margin-bottom: 0.2rem;
+    }
+    .stat-value {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.5rem 1.2rem 0;
+    }
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 1.1rem;
+      padding: 1.1rem 1.2rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 25px rgba(15,23,42,0.04);
+    }
+    .card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.4rem;
+    }
+    .card p {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.14rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: #eff6ff;
+      color: #1d4ed8;
+      margin-bottom: 0.4rem;
+    }
+
+    .company-info {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.4rem;
+    }
+    .info-list {
+      list-style: none;
+      font-size: 0.9rem;
+      border-radius: 1rem;
+      background: #fff;
+      padding: 1rem 1.2rem;
+      border: 1px solid #e5e7eb;
+    }
+    .info-list li + li { margin-top: 0.45rem; }
+    .info-label { color: #6b7280; margin-right: 0.5rem; }
+
+    .contact-box {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 1.2rem;
+      padding: 1.2rem 1.3rem;
+    }
+    .contact-box h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .contact-row { font-size: 0.86rem; margin-bottom: 0.25rem; }
+    .contact-row span { color: #9ca3af; margin-right: 0.4rem; }
+
+    footer {
+      margin-top: 3rem;
+      border-top: 1px solid #e5e7eb;
+      background: #fff;
+    }
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1rem 1.2rem 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 2.5rem;
+      }
+      .hero-card {
+        order: -1;
+      }
+      .company-info {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="logo">지반재해방재원(Institute of GDP) <span>Company</span></div>
+      <nav>
+        <ul>
+          <li><a href="#about">회사소개</a></li>
+          <li><a href="#services">서비스</a></li>
+          <li><a href="#projects">실적</a></li>
+          <li><a href="#contact">문의</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn-primary">문의하기</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div>
+        <div class="hero-kicker">IGDP · Institute of Geotechnical Disaster Prevention</div>
+        <h1>
+          Advanced Numerical Analysis & Forensic Geotechnical Engineering 전문기관<br />
+          <span>지반재해방재원(Institute of GDP)</span>
+        </h1>
+        </h1>
+        </h1>
+        <p>
+          지반재해방재원(Institute of GDP)은 수치해석, 지반공학 기술 자문, Forensic Geotechnical Engineering,
+          해외사업개발을 통해 복잡한 지반·구조물 문제를 과학적으로 분석하고,
+          국내외 고객에게 최적의 기술 솔루션을 제공합니다.
+        </p>
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">프로젝트 상담 요청</button>
+        <div class="hero-meta" style="margin-top:1.3rem;">
+          <div><strong>주요 고객</strong><br />지자체, 공공기관, 민간엔지니어링사, 해외 파트너 등</div>
+          <div><strong>주요 사업</strong><br />수치해석·지반공학 자문·Forensic·해외사업개발</div>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>한눈에 보는 지반재해방재원(Institute of GDP)</h2>
+        <p style="font-size:0.85rem;color:#4b5563;">
+          아래 항목은 필요에 따라 수정하여 사용하실 수 있습니다.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-label">설립연도</div>
+            <div class="stat-value">2015년</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">전문 분야</div>
+            <div class="stat-value">지반공학 · 수치해석</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">핵심 서비스</div>
+            <div class="stat-value">설계자문 · 조사 · 분석</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">활동 지역</div>
+            <div class="stat-value">국내 · 해외 프로젝트</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">회사소개</h2>
+      <p class="section-subtitle">
+        지반재해방재원(Institute of GDP)은 지반공학 기반의 고도기술을 바탕으로 수치해석, 전문 자문,
+        Forensic Geotechnical Engineering, 해외사업개발을 수행하는 전문 기관입니다.
+      </p>
+      <div class="cards">
+        <article class="card">
+          <div class="chip">Vision</div>
+          <h3>비전</h3>
+          <p>
+            과학적 근거에 기반한 지반공학 분석과 국제적 기술 표준을 적용하여,
+            안전하고 신뢰할 수 있는 글로벌 지반 솔루션을 제공하는 것을 목표로 합니다.
+          </p>
+        </article>
+        <article class="card">
+          <div class="chip">Value</div>
+          <h3>핵심가치</h3>
+          <p>
+            전문성·정확성·투명성을 최우선으로 하며, 모든 프로젝트에서 데이터 기반의
+            의사결정과 책임 있는 기술 자문을 제공합니다.
+          </p>
+        </article>
+        <article class="card">
+          <div class="chip">Strength</div>
+          <h3>강점</h3>
+          <p>
+            본 회사는 25년 이상의 설계경험을 보유한 지반공학 전문가가 직접 수치해석(Numerical Analysis)을 수행하여,
+            신속하고 설계 목적에 적합한 해석 결과를 제공합니다. 또한 다양한 지반 조건과 구조물 특성에 대한 폭넓은 실무 경험을 기반으로,
+            복합적·고난도 프로젝트에도 즉시 대응 가능한 전문적 분석 역량을 보유하고 있습니다.
+          </p>
+        </article>
+        <article class="card">
+          <div class="chip">Expertise</div>
+          <h3>국제협력·해외기술역량</h3>
+          <p>
+            지반재해방재원(Institute of GDP)은 해외 대학·연구기관과의 공동연구 수행 경험이 풍부하며,
+            국제 프로젝트 참여를 위한 기술 표준·절차에 정통합니다. 또한 해외 특허 출원,
+            기술 문서 작성, 글로벌 파트너십 구축 등을 신속하고 전문적으로 지원하여
+            해외사업 추진에 필요한 종합적 기술 역량을 보유하고 있습니다.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2 class="section-title">주요 서비스</h2>
+      <p class="section-subtitle">지반재해방재원(Institute of GDP)은 설계자문을 중심으로 조사·분석을 아우르는 지반공학 종합 기술 서비스를 제공합니다.</p>
+      <div class="cards">
+        <article class="card">
+          <h3>설계자문 (Geotechnical Design Consulting)</h3>
+          <p>
+            도로·교량·사면·성토 등 인프라 설계 단계에서 필요한 지반공학 기술 자문을 제공합니다.<br>
+            지반조건 검토, 설계 적합성 판단, 보강·개량 대안 제시 등 설계 전반을 지원합니다.
+          </p>
+        </article>
+        <article class="card">
+          <h3>설계·해석 기반 조사 (Investigation for Design & Analysis)</h3>
+          <p>
+            日本「盛土規制法」 및 관련 기술기준에 따른 설계·안정해석을 위해 필요한 지반조사·계측자료 해석을 수행합니다.<br>
+            성토 안전성 평가, 연약지반 특성 검토, 지반 파라미터 산정 등 설계 및 검토에 필수적인 기초자료를 제공합니다.
+          </p>
+        </article>
+        <article class="card">
+          <h3>수치해석 (FEM, Slope Stability)</h3>
+          <p>
+            FEM·3D 수치해석, 사면 안정해석, 지진응답해석 등 설계에 직접 반영 가능한 고도 분석을 수행하여
+            경제적이고 안전한 설계 의사결정을 지원합니다.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Forensic Geotechnical Engineering</h3>
+          <p>
+            지반재해·구조물 문제 발생 시 원인을 규명하고, 재발 방지 및 보강 방안을 제시하는 전문 분석 서비스를 제공합니다.
+          </p>
+        </article>
+      </div>
+    </section>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">주요 실적</h2>
+      <p class="section-subtitle">연도별 실적을 선택하여 확인할 수 있습니다.</p>
+
+      <!-- Tabs -->
+      <div style="display:flex; gap:0.6rem; margin-bottom:1rem;">
+        <button class="btn-primary" onclick="showYear('y2025')">2025</button>
+        <button class="btn-primary" onclick="showYear('y2024')">2024</button>
+        <button class="btn-primary" onclick="showYear('y2023')">2023</button>
+        <button class="btn-primary" onclick="showYear('y2022')">2022</button>
+      </div>
+
+      <!-- 2022 -->
+      <div id="y2022" class="year-table">
+        <table style="width:100%; border-collapse:collapse; background:#fff; font-size:0.9rem;">
+          <thead>
+            <tr style="background:#e8eef7; text-align:left;">
+              <th style="padding:8px; border:1px solid #d4d7dd; width:32%;">프로젝트명</th>
+              <th style="padding:8px; border:1px solid #d4d7dd;">주요 내용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding:8px; border:1px solid #d4d7dd;">1호 EDAFUJI BYPASS 도로 기본설계</td><td style="padding:8px; border:1px solid #d4d7dd;"></td></tr>
+            <tr><td style="padding:8px; border:1px solid #d4d7dd;">ANAN-AKI 자동차도로 상세설계</td><td style="padding:8px; border:1px solid #d4d7dd;"></td></tr>
+            <tr><td style="padding:8px; border:1px solid #d4d7dd;">MINAMIZAWAKAWAJI 하천교량 상세설계</td><td style="padding:8px; border:1px solid #d4d7dd;"></td></tr>
+            <tr><td style="padding:8px; border:1px solid #d4d7dd;">철강슬라그 성토 내진설계</td><td style="padding:8px; border:1px solid #d4d7dd;"></td></tr>
+            <tr><td style="padding:8px; border:1px solid #d4d7dd;">오사카 모노레일 상세설계</td><td style="padding:8px; border:1px solid #d4d7dd;"></td></tr>
+            <tr><td style="padding:8px; border:1px solid #d4d7dd;">1호 EDAFUJI BYPASS 도로 상세설계</td><td style="padding:8px; border:1px solid #d4d7dd;"></td></tr>
+            <tr><td style="padding:8px; border:1px solid #d4d7dd;">SORAK 동부 크린센터</td><td style="padding:8px; border:1px solid #d4d7dd;"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty tables for future years -->
+      <div id="y2023" class="year-table" style="display:none;">
+        <p>2023년 실적이 등록될 예정입니다.</p>
+      </div>
+      <div id="y2024" class="year-table" style="display:none;">
+        <p>2024년 실적이 등록될 예정입니다.</p>
+      </div>
+      <div id="y2025" class="year-table" style="display:none;">
+        <p>2025년 실적이 등록될 예정입니다.</p>
+      </div>
+
+      <script>
+        function showYear(id) {
+          document.querySelectorAll('.year-table').forEach(e => e.style.display = 'none');
+          document.getElementById(id).style.display = 'block';
+        }
+      </script>
+
+    </section>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">문의하기</h2>
+      <p class="section-subtitle">
+        연락처 및 회사 기본 정보를 정리해 두면, 간단한 회사 소개자료로도 활용할 수 있습니다.
+      </p>
+      <div class="company-info">
+        <ul class="info-list">
+          <li><span class="info-label">회사명</span> 지반재해방재원(Institute of GDP)</li>
+          
+          <li><span class="info-label">설립일</span> 2015년 10월 1일</li>
+          <li><span class="info-label">사업자번호</span> 678-97-00064</li>
+          <li><span class="info-label">주소</span> 대구광역시 수성구 달구벌대로 627길 36, 1층<br>1st Floor, 36 Dalgubeol-daero 627-gil, Suseong-gu, Daegu, Republic of Korea</li>
+          <li><span class="info-label">전화</span> +82-10-4723-5085</li>
+          
+          <li><span class="info-label">E-mail</span> info@example.com</li>
+        </ul>
+        <div class="contact-box">
+          <h3>온라인 문의</h3>
+          <p style="font-size:0.86rem;margin-bottom:0.6rem;">
+            실제 운영 시에는 아래 안내 문구 대신 폼 솔루션(예: 구글폼, Typeform 등)을
+            연결하거나, 이메일 링크를 사용하시면 됩니다.
+          </p>
+          <div class="contact-row"><span>이메일</span>문의 제목에 [지반재해방재원(Institute of GDP) 문의]를 기재해 주시면 빠르게 확인할 수 있습니다.</div>
+          <div class="contact-row"><span>응답시간</span>평일 09:00 ~ 18:00 (주말·공휴일 휴무)</div>
+          <div class="contact-row"><span>개인정보</span>문의 내용은 답변 목적 외에는 사용하지 않습니다.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2015-2025 지반재해방재원(Institute of GDP). All rights reserved.</div>
+      <div>사업자등록번호 000-00-00000 · </div>
+    </div>
+  </footer>
+</body>
+</html>
