@@ -48,6 +48,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
@@ -221,6 +225,108 @@
     .btn-primary--ghost:hover {
       background: #ffffff;
       box-shadow: 0 6px 18px rgba(120, 53, 15, 0.16);
+    }
+
+    /* =========================
+       Mobile Nav (Hamburger)
+    ========================== */
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(184, 134, 11, 0.45);
+      background: rgba(255, 250, 240, 0.9);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 0.4rem;
+    }
+
+    .nav-toggle-bars {
+      width: 18px;
+      height: 14px;
+      position: relative;
+    }
+
+    .nav-toggle-bars span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: #78350f;
+      transition: transform 0.22s ease, top 0.22s ease, opacity 0.18s ease;
+    }
+
+    .nav-toggle-bars span:nth-child(1) {
+      top: 0;
+    }
+
+    .nav-toggle-bars span:nth-child(2) {
+      top: 6px;
+    }
+
+    .nav-toggle-bars span:nth-child(3) {
+      top: 12px;
+    }
+
+    .nav-toggle.is-open .nav-toggle-bars span:nth-child(1) {
+      top: 6px;
+      transform: rotate(45deg);
+    }
+
+    .nav-toggle.is-open .nav-toggle-bars span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.is-open .nav-toggle-bars span:nth-child(3) {
+      top: 6px;
+      transform: rotate(-45deg);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: relative;
+      z-index: 90;
+      background: rgba(255, 252, 245, 0.98);
+      border-bottom: 1px solid var(--color-border-soft);
+    }
+
+    .mobile-nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0.4rem 1.4rem 0.8rem;
+    }
+
+    .mobile-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .mobile-nav a {
+      padding: 0.35rem 0;
+      display: block;
+    }
+
+    .mobile-nav.is-open {
+      display: block;
+      animation: dropdown-fade 0.18s ease-out;
+    }
+
+    @keyframes dropdown-fade {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* =========================
@@ -683,24 +789,37 @@
 
     @media (max-width: 768px) {
       .container {
-        padding: 0 1rem;
+        padding: 0 1.1rem;
       }
 
       .nav-inner {
         padding-inline: 0;
-        gap: 0.75rem;
+        gap: 0.6rem;
       }
 
-      nav ul {
+      /* 데스크탑 메뉴 숨김, 햄버거 + 모바일 메뉴 활성화 */
+      header nav {
         display: none;
       }
 
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .hero-wrap {
+        margin-top: 0.6rem;
+      }
+
       .hero {
-        padding: 2.4rem 0 2.4rem;
+        padding: 2.1rem 0 2.1rem;
       }
 
       section {
-        padding-inline: 0;
+        padding: 2.4rem 0 0;
+      }
+
+      .card {
+        padding: 1rem 1rem;
       }
 
       .company-info {
@@ -709,15 +828,24 @@
 
       #services {
         border-radius: 1.1rem;
+        margin-top: 2.6rem;
       }
 
       .btn-primary,
       .btn-primary--ghost {
         font-size: 0.86rem;
       }
+
+      .footer-inner {
+        padding: 0.9rem 0 1.2rem;
+      }
     }
 
     @media (max-width: 480px) {
+      .container {
+        padding: 0 0.9rem;
+      }
+
       .hero-actions {
         flex-direction: column;
         align-items: flex-start;
@@ -800,7 +928,36 @@
           <li><a href="#contact">문의</a></li>
         </ul>
       </nav>
-      <a href="#contact" class="btn-primary">문의하기</a>
+
+      <!-- 모바일용 햄버거 버튼 -->
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="메뉴 열기"
+        aria-expanded="false"
+        aria-controls="mobileNav"
+      >
+        <div class="nav-toggle-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      <!-- 데스크탑용 우측 버튼 -->
+      <a href="#contact" class="btn-primary desktop-contact-btn">문의하기</a>
+    </div>
+
+    <!-- 모바일 드롭다운 메뉴 -->
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+      <div class="mobile-nav-inner">
+        <ul>
+          <li><a href="#about">회사소개</a></li>
+          <li><a href="#services">서비스</a></li>
+          <li><a href="#projects">실적</a></li>
+          <li><a href="#contact">문의</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -1086,7 +1243,7 @@
     <section id="contact" class="container">
       <h2 class="section-title">문의하기</h2>
       <p class="section-subtitle">
-        地盤災害防災院(Institute of GDP)は、地盤工学の諸問題および関連の高度数値解析を実施する専門機関です.
+        地盤災害防災院(Institute of GDP)は、地盤工学の諸問題および関連の高度数値解析を実施する専門機関です。
       </p>
       <div class="company-info">
         <ul class="info-list">
@@ -1176,9 +1333,44 @@
       updateBackground();
       window.addEventListener('scroll', updateBackground, { passive: true });
     })();
+
+    // ===== 모바일 햄버거 메뉴 토글 =====
+    (function () {
+      const toggleBtn = document.querySelector('.nav-toggle');
+      const mobileNav = document.getElementById('mobileNav');
+
+      if (!toggleBtn || !mobileNav) return;
+
+      function closeMenu() {
+        toggleBtn.classList.remove('is-open');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('is-open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+      }
+
+      toggleBtn.addEventListener('click', function () {
+        const isOpen = toggleBtn.classList.contains('is-open');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          toggleBtn.classList.add('is-open');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          mobileNav.classList.add('is-open');
+          mobileNav.setAttribute('aria-hidden', 'false');
+        }
+      });
+
+      // 모바일 메뉴에서 링크 클릭 시 자동 닫기
+      mobileNav.addEventListener('click', function (e) {
+        if (e.target.tagName.toLowerCase() === 'a') {
+          closeMenu();
+        }
+      });
+    })();
   </script>
 </body>
 </html>
+
 
 
 
