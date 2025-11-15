@@ -76,6 +76,7 @@
       max-width: 1160px;
       margin: 0 auto;
       padding: 0 1.4rem;
+      width: 100%;
     }
 
     /* =========================
@@ -587,6 +588,12 @@
       display: none;
     }
 
+    /* 테이블 래퍼: 모바일에서 가로 스크롤 가능 */
+    .projects-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+
     .projects-table {
       width: 100%;
       border-collapse: collapse;
@@ -595,6 +602,7 @@
       border-radius: 0.9rem;
       overflow: hidden;
       box-shadow: 0 12px 30px rgba(120, 53, 15, 0.08);
+      min-width: 360px; /* 너무 좁아지지 않도록 */
     }
 
     .projects-table thead tr {
@@ -667,11 +675,20 @@
       .hero-card-shell {
         padding-right: 0;
       }
+
+      .hero-card {
+        margin-top: 0.8rem;
+      }
     }
 
     @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
       .nav-inner {
         padding-inline: 0;
+        gap: 0.75rem;
       }
 
       nav ul {
@@ -679,7 +696,7 @@
       }
 
       .hero {
-        padding-inline: 0;
+        padding: 2.4rem 0 2.4rem;
       }
 
       section {
@@ -693,6 +710,11 @@
       #services {
         border-radius: 1.1rem;
       }
+
+      .btn-primary,
+      .btn-primary--ghost {
+        font-size: 0.86rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -703,6 +725,18 @@
 
       .hero-meta {
         flex-direction: column;
+      }
+
+      .logo {
+        font-size: 0.9rem;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .projects-table {
+        font-size: 0.82rem;
       }
     }
   </style>
@@ -948,95 +982,103 @@
 
       <!-- 2025 -->
       <div id="y2025" class="year-table">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th>프로젝트명</th>
-              <th>주요 내용</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- 2025년 실적은 필요 시 추가 -->
-          </tbody>
-        </table>
+        <div class="projects-table-wrap">
+          <table class="projects-table">
+            <thead>
+              <tr>
+                <th>프로젝트명</th>
+                <th>주요 내용</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 2025년 실적은 필요 시 추가 -->
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <!-- 2024 -->
       <div id="y2024" class="year-table">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th>프로젝트명</th>
-              <th>주요 내용</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>京都縦貫道大井IC～亀岡IC修正設計業務</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="projects-table-wrap">
+          <table class="projects-table">
+            <thead>
+              <tr>
+                <th>프로젝트명</th>
+                <th>주요 내용</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>京都縦貫道大井IC～亀岡IC修正設計業務</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <!-- 2023 -->
       <div id="y2023" class="year-table">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th>프로젝트명</th>
-              <th>주요 내용</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>○○○○</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="projects-table-wrap">
+          <table class="projects-table">
+            <thead>
+              <tr>
+                <th>프로젝트명</th>
+                <th>주요 내용</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>○○○○</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <!-- 2022 -->
       <div id="y2022" class="year-table">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th>프로젝트명</th>
-              <th>주요 내용</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1호 EDAFUJI BYPASS 도로 기본설계</td>
-              <td>地盤変形解析、情報化施工計画</td>
-            </tr>
-            <tr>
-              <td>ANAN-AKI 자동차도로 상세설계</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>MINAMIZAWAKAWAJI 하천교량 상세설계</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>철강슬라그 성토 내진설계</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>오사카 모노레일 상세설계</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>1호 EDAFUJI BYPASS 도로 상세설계</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>SORAK 동부 크린센터</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="projects-table-wrap">
+          <table class="projects-table">
+            <thead>
+              <tr>
+                <th>프로젝트명</th>
+                <th>주요 내용</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1호 EDAFUJI BYPASS 도로 기본설계</td>
+                <td>地盤変形解析、情報化施工計画</td>
+              </tr>
+              <tr>
+                <td>ANAN-AKI 자동차도로 상세설계</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>MINAMIZAWAKAWAJI 하천교량 상세설계</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>철강슬라그 성토 내진설계</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>오사카 모노레일 상세설계</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>1호 EDAFUJI BYPASS 도로 상세설계</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>SORAK 동부 크린센터</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -1137,6 +1179,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
