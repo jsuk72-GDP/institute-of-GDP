@@ -768,6 +768,42 @@
       padding: 1rem 0 1.5rem;
     }
 
+/* =========================
+   Clients / Customers
+========================== */
+.clients-section {
+  margin-top: 3.1rem;
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.9rem;
+}
+
+.client-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--color-border-soft);
+  font-size: 0.86rem;
+  color: var(--color-text-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(120, 53, 15, 0.03);
+}
+
+/* 로고 이미지가 생기면 여기 사용
+.client-logo {
+  max-width: 120px;
+  max-height: 36px;
+  object-fit: contain;
+}
+*/
+
+    
     /* =========================
        Responsive
     ========================== */
@@ -925,6 +961,7 @@
           <li><a href="#about">회사소개</a></li>
           <li><a href="#services">서비스</a></li>
           <li><a href="#projects">실적</a></li>
+          <li><a href="#clients">고객사</a></li>
           <li><a href="#contact">문의</a></li>
         </ul>
       </nav>
@@ -955,6 +992,7 @@
           <li><a href="#about">회사소개</a></li>
           <li><a href="#services">서비스</a></li>
           <li><a href="#projects">실적</a></li>
+          <li><a href="#clients">고객사</a></li>
           <li><a href="#contact">문의</a></li>
         </ul>
       </div>
@@ -1358,6 +1396,32 @@
       </div>
     </section>
 
+    <!-- Clients -->
+    <section id="clients" class="container clients-section">
+      <h2 class="section-title">고객사 · 主要取引先</h2>
+      <p class="section-subtitle">
+        지반재해방재원(Institute of GDP)은 국내·외 공공기관 및 엔지니어링사와의 협업을 통해
+        다양한 지반재해 및 설계 검토 프로젝트를 수행하고 있습니다.
+      </p>
+
+      <div class="clients-grid">
+        <!-- ★ここに実際の社名を入れてください -->
+        <div class="client-card">一般財団法人 建設工学研究所 (CERI)</div>
+        <div class="client-card">協和設計株式会社</div>
+        <div class="client-card">大日本コンサルタント株式会社</div>
+        <div class="client-card">○○市役所 / 地方自治体</div>
+        <div class="client-card">△△エンジニアリング株式会社</div>
+        <div class="client-card">海外 파트너사 (예: YG Grouting Co., Ltd.)</div>
+
+        <!-- ロゴ画像を使う場合の例
+        <div class="client-card">
+          <img src="images/logo-ceri.png" alt="CERI" class="client-logo">
+        </div>
+        -->
+      </div>
+    </section>
+
+    
     <!-- Contact -->
     <section id="contact" class="container">
       <h2 class="section-title">문의하기</h2>
@@ -1489,6 +1553,7 @@
   </script>
 </body>
 </html>
+
 
 
 
